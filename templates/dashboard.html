@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock %}
+{% csrf_token %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if request.user.is_authenticated %}
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">SR</th>
+                <th scope="col">Compony Name</th>
+                <th scope="col">LTP</th>
+                <th scope="col">Change</th>
+                <th scope="col">Buy Price</th>
+                <th scope="col">Sell Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for data in data_obj %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href="{% url 'individual' data.slug %}"> {{data.company_name}}</a></td>
+                <td>{{data.ltp}}</td>
+                <td>{{data.change}}</td>
+                <td>{{data.buyprice}}</td>
+                <td>{{data.sellprice}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <h4 class="text-center mt-4 mb-4">Stock Name</h4>
+            {% for data in data_obj %}
+            <div class="col-lg-2">{{data.company_name}}</div>
+            {% endfor %}
+            <div class="row">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4 text-center mt-4">
+                <a href="{% url 'login'%}" class="btn btn-info">Back</a>
+              </div>
+            </div>
+            
+          {% endif %}
+    </div>
+</div>
+{% endblock %}

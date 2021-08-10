@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}welcome{% endblock %}
+{% block head %}
+<script type="text/javascript">
+            function doit_onkeypress(event){
+                if (event.keyCode == 13 || event.which == 13){
+                    login();
+                }
+            }
+</script>
+{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Username</label>
+                  <input type="email" class="form-control" id="username" aria-describedby="emailHelp" onkeypress="javascript:doit_onkeypress(event);">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" onkeypress="javascript:doit_onkeypress(event);">
+                </div>
+                <button type="submit" onclick="login()" class="btn btn-primary">Submit</button>
+                <a href="{% url 'signup' %}" class="btn btn-warning">signup</a>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+
+{% endblock %}

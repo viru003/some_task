@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}view_stock{% endblock %}
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="text-center"><h4>{{data.company_name}}</h4></div>
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col">SR</th>
+                <th scope="col">Chnage</th>
+                <th scope="col">LTP</th>
+                <th scope="col">Buy Price</th>
+                <th scope="col">Sell Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{data.change}}</td>
+                <td>{{data.ltp}}</td>
+                <td>{{data.buyprice}}</td>
+                <td>{{data.sellprice}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}
